@@ -3,9 +3,10 @@ import { Switch, Route } from 'react-router-dom';
 import AppBar from './components/AppBar/AppBar';
 import Container from './components/Container/Container';
 import Trial from './Views/Trial';
-import Home from './Views/Home';
+import HomePage from './Views/Home';
 import Movies from './Views/Movies';
 import NotFound from './Views/NotFound';
+import DetailsMovies from './components/DetailsMovies/DetailsMovies';
 
 function App() {
   return (
@@ -14,11 +15,15 @@ function App() {
 
       <Switch>
         <Route path="/" exact>
-          <Home />
+          <HomePage />
         </Route>
 
-        <Route path="/movies">
+        <Route path="/movies" exact>
           <Movies />
+        </Route>
+
+        <Route path="/movies/:moviesId">
+          <DetailsMovies />
         </Route>
 
         <Route path="/trial">

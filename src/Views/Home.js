@@ -1,13 +1,36 @@
-import fethTrendingFilms from '../services/Api';
 import { useState, useEffect } from 'react';
+import * as Api from '../services/Api';
+import { Link, useRouteMatch } from 'react-router-dom';
 
-export default function Home() {
-  const [name, SetName] = useState(null);
+function HomePage() {
+  const [page, SetPage] = useState(1);
+  const [movies, setMovies] = useState([]);
 
-  //   useEffect(() => {
-  //     fethTrendingFilms().then(SetName);
-  //   }, []);
+  // const url = useRouteMatch;
 
-  console.log(fethTrendingFilms);
-  return <h1>Trending today </h1>;
+  useEffect(() => {
+    Api.fethTrendingMovies(page)
+      .then(moviesData => {
+        setMovies(movies => [...movies, ...moviesData.results]);
+      })
+      .catch(error => error.massage);
+  }, [page]);
+
+  return (
+    <>
+      <h1>Trending today </h1>
+      <ul>
+        {movies &&
+          movies.map(movie => (
+            <li key={movie.id}>
+              <Link to={`/movies/${movie.id}`}>{movie.title}</Link>
+            </li>
+          ))}
+      </ul>
+    </>
+  );
 }
+
+export default HomePage;
+
+//  ? movie.title : movie.name

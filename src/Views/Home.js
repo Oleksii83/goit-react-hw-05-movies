@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react';
 import * as Api from '../services/Api';
-import { Link, useRouteMatch } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 
 function HomePage() {
   const [page, SetPage] = useState(1);

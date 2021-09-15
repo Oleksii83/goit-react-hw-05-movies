@@ -6,7 +6,7 @@ import Trial from './Views/Trial';
 import HomePage from './Views/Home';
 import Movies from './Views/Movies';
 import NotFound from './Views/NotFound';
-import DetailsMovies from './components/DetailsMovies/DetailsMovies';
+import MovieDetailsPage from './components/MovieDetailsPage/MovieDetailsPage';
 
 function App() {
   return (
@@ -23,7 +23,7 @@ function App() {
         </Route>
 
         <Route path="/movies/:moviesId">
-          <DetailsMovies />
+          <MovieDetailsPage />
         </Route>
 
         <Route path="/trial">

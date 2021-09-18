@@ -3,7 +3,7 @@ import { Switch, Route } from 'react-router-dom';
 import AppBar from './components/AppBar/AppBar';
 import Container from './components/Container/Container';
 import Trial from './Views/Trial';
-import HomePage from './Views/Home';
+import HomePage from './components/HomePage/HomePage';
 import Movies from './Views/Movies';
 import NotFound from './Views/NotFound';
 import MovieDetailsPage from './components/MovieDetailsPage/MovieDetailsPage';

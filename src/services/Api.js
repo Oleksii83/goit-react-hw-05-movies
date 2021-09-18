@@ -25,9 +25,7 @@ export function fethDetailsMovies(moviesData) {
 
 // запрос информации о актёрском составе для страницы кинофильма.
 export function fethActorsMovies(moviesId) {
-  return fetchMoviesApi(
-    `${BASE_URL}search/movie${moviesId}/credits?api_key=${key}&language=en-US)`,
-  );
+  return fetchMoviesApi(`${BASE_URL}movie/${moviesId}/credits?api_key=${key}&language=en-US)`);
 }
 
 // запрос обзоров для страницы кинофильма.

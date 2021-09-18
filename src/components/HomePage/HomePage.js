@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react';
-import * as Api from '../services/Api';
+import * as Api from '../../services/Api';
 import { Link } from 'react-router-dom';
 
 function HomePage() {

@@ -3,15 +3,15 @@ import { useParams } from 'react-router';
 import { NavLink, Route, useRouteMatch } from 'react-router-dom';
 import * as Api from '../../services/Api';
 import Cast from '../Cast/Cast';
-
 import Reviews from '../Reviews/Reviews';
 
 export default function MovieDetailsPage() {
-  const match = useRouteMatch();
-  console.log('🚀 ~ file: MovieDetailsPage.js ~ line 10 ~ MovieDetailsPage ~ match', match);
+  const { url } = useRouteMatch();
+
   const { moviesId } = useParams();
 
   const [movie, setMovie] = useState('');
+
   useEffect(() => {
     Api.fethDetailsMovies(moviesId)
       .then(setMovie)
@@ -35,6 +35,7 @@ export default function MovieDetailsPage() {
               <li key={genre.id}>{genre.name}</li>
             ))}
           </ul>
+          <hr />
         </>
       )}
 
@@ -43,12 +44,12 @@ export default function MovieDetailsPage() {
           <p>Additional information</p>
           <ul>
             <li>
-              <NavLink to="{`${url}/${genre.id}`}" className="" activeClassName="">
+              <NavLink to={`${url}/cast`} className="" activeClassName="">
                 Cast
               </NavLink>
             </li>
             <li>
-              <NavLink to="/reviews" className="" activeClassName="">
+              <NavLink to={`${url}/reviews`} className="" activeClassName="">
                 Reviews
               </NavLink>
             </li>
@@ -57,7 +58,7 @@ export default function MovieDetailsPage() {
       )}
       <hr />
 
-      <Route path="/movies/:moviesId">
+      <Route path={`${url}/cast`}>
         <Cast />
       </Route>
     </>

@@ -10,10 +10,6 @@ const Navigation = () => (
     <NavLink to="/movies" className={styles.link} activeClassName={styles.activeLink}>
       Movies
     </NavLink>
-
-    <NavLink to="/trial" className={styles.link} activeClassName={styles.activeLink}>
-      Пробная
-    </NavLink>
   </nav>
 );
 

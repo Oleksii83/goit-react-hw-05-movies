@@ -9,13 +9,14 @@ export default function Cast() {
   // const movies = movie.find(genre => genre.id === Number(moviesId));
   useEffect(moviesId => {
     Api.fethActorsMovies(moviesId)
-      .then(result => setCast(result.cast))
+      .then(result => setCast([...result.cast]))
       .catch(error => error.massage);
   }, []);
   return (
     <section>
       <ul>
         <h1>Добро пожаловать в {moviesId} </h1>
+
         {cast &&
           cast.map(actor => (
             <li key={actor.id}>

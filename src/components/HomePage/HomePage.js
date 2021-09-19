@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react';
 import * as Api from '../../services/Api';
-import { Link } from 'react-router-dom';
+import { NavLink } from 'react-router-dom';
 
 function HomePage() {
   const [page, SetPage] = useState(1);
@@ -23,7 +23,7 @@ function HomePage() {
         {movies &&
           movies.map(movie => (
             <li key={movie.id}>
-              <Link to={`/movies/${movie.id}`}>{movie.title}</Link>
+              <NavLink to={`/movies/${movie.id}`}>{movie.title}</NavLink>
             </li>
           ))}
       </ul>

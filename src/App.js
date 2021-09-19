@@ -2,9 +2,8 @@ import './App.css';
 import { Switch, Route } from 'react-router-dom';
 import AppBar from './components/AppBar/AppBar';
 import Container from './components/Container/Container';
-import Trial from './Views/Trial';
 import HomePage from './components/HomePage/HomePage';
-import Movies from './Views/Movies';
+import Movies from './components/Movies/Movies';
 import NotFound from './Views/NotFound';
 import MovieDetailsPage from './components/MovieDetailsPage/MovieDetailsPage';
 
@@ -24,10 +23,6 @@ function App() {
 
         <Route path="/movies/:moviesId">
           <MovieDetailsPage />
-        </Route>
-
-        <Route path="/trial">
-          <Trial />
         </Route>
 
         <Route>

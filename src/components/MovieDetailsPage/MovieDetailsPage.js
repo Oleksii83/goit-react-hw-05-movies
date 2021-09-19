@@ -6,7 +6,7 @@ import Cast from '../Cast/Cast';
 import Reviews from '../Reviews/Reviews';
 
 export default function MovieDetailsPage() {
-  const { url } = useRouteMatch();
+  const { url, path } = useRouteMatch();
 
   const { moviesId } = useParams();
 
@@ -58,9 +58,13 @@ export default function MovieDetailsPage() {
       )}
       <hr />
 
-      <Route path={`${url}/cast`}>
+      <Route path={`${path}/cast`}>
         <Cast />
       </Route>
+      {/* <hr />
+      <Route path={`${url}/cast`}>
+        <Reviews />
+      </Route> */}
     </>
   );
 }

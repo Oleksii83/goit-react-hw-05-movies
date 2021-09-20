@@ -16,7 +16,7 @@ export default function MovieDetailsPage() {
     Api.fethDetailsMovies(moviesId)
       .then(setMovie)
       .catch(error => error.massage);
-  }, [moviesId]);
+  }, []);
 
   return (
     <>
@@ -61,10 +61,10 @@ export default function MovieDetailsPage() {
       <Route path={`${path}/cast`}>
         <Cast />
       </Route>
-      {/* <hr />
-      <Route path={`${url}/cast`}>
+
+      <Route path={`${path}/reviews`}>
         <Reviews />
-      </Route> */}
+      </Route>
     </>
   );
 }

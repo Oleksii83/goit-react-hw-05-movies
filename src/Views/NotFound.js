@@ -1,3 +1,3 @@
 export default function NotFound() {
-  return <h1>404 Страница не найдена</h1>;
+  return <h1> Choose from the menu </h1>;
 }

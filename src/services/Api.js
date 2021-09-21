@@ -31,6 +31,6 @@ export function fethActorsMovies(moviesId) {
 // запрос обзоров для страницы кинофильма.
 export function fethReviewsMovies(moviesId) {
   return fetchMoviesApi(
-    `${BASE_URL}search/movie${moviesId}/reviews/credits?api_key=${key}&language=en-US)`,
+    `${BASE_URL}movie/${moviesId}/reviews?api_key=${key}&language=en-US&page=1`,
   );
 }

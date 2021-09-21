@@ -2,6 +2,7 @@ import { useParams } from 'react-router';
 import { useState, useEffect } from 'react';
 import * as Api from '../../services/Api';
 import logo from './logo.jpg';
+import s from './Cast.module.css';
 // import { Link } from 'react-router-dom';
 
 export default function Cast() {
@@ -15,7 +16,7 @@ export default function Cast() {
   }, [moviesId]);
   return (
     <section>
-      <ul>
+      <ul className={s.castList}>
         {/* <h1>Добро пожаловать в {moviesId} </h1> */}
 
         {cast &&
@@ -28,7 +29,7 @@ export default function Cast() {
                   alt={actor.name}
                 ></img>
               ) : (
-                <img src={logo} width="200" alt={actor.name}></img>
+                <img src={logo} width="200" height="300" alt={actor.name}></img>
               )}
               <p>{actor.original_name}</p>
             </li>

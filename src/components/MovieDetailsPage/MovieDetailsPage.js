@@ -1,10 +1,13 @@
-import { useState, useEffect } from 'react';
+import { useState, useEffect, Suspense, lazy } from 'react';
+import Loader from 'react-loader-spinner';
 import { useParams } from 'react-router';
 import { NavLink, Route, useRouteMatch } from 'react-router-dom';
 import * as Api from '../../services/Api';
-import Cast from '../Cast/Cast';
+// import Cast from '../Cast/Cast';
 import Reviews from '../Reviews/Reviews';
 import s from './MovieDetailsPage.module.css';
+
+const Cast = lazy(() => import('../Cast/Cast' /* webpackChunkName: "cast" */));
 
 export default function MovieDetailsPage() {
   const { url, path } = useRouteMatch();
@@ -64,14 +67,15 @@ export default function MovieDetailsPage() {
         </div>
       )}
       <hr />
+      <Suspense fallback={<Loader />}>
+        <Route path={`${path}/cast`}>
+          <Cast />
+        </Route>
 
-      <Route path={`${path}/cast`}>
-        <Cast />
-      </Route>
-
-      <Route path={`${path}/reviews`}>
-        <Reviews />
-      </Route>
+        <Route path={`${path}/reviews`}>
+          <Reviews />
+        </Route>
+      </Suspense>
     </>
   );
 }

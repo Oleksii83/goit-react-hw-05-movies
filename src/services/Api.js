@@ -18,7 +18,6 @@ export function fethSearchMovies(query) {
   );
 }
 
-// запрос полной информации о фильме для страницы кинофильма.
 export function fethDetailsMovies(moviesData) {
   return fetchMoviesApi(`${BASE_URL}movie/${moviesData}?api_key=${key}&language=en-US)`);
 }

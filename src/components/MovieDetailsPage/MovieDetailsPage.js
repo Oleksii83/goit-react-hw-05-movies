@@ -1,7 +1,7 @@
 import { useState, useEffect, Suspense, lazy } from 'react';
 import Loader from 'react-loader-spinner';
 import { useParams } from 'react-router';
-import { NavLink, Route, useRouteMatch } from 'react-router-dom';
+import { NavLink, Route, useRouteMatch, useLocation, useHistory } from 'react-router-dom';
 import * as Api from '../../services/Api';
 // import Cast from '../Cast/Cast';
 import Reviews from '../Reviews/Reviews';
@@ -10,6 +10,9 @@ import s from './MovieDetailsPage.module.css';
 const Cast = lazy(() => import('../Cast/Cast' /* webpackChunkName: "cast" */));
 
 export default function MovieDetailsPage() {
+  const location = useLocation();
+  const history = useHistory();
+
   const { url, path } = useRouteMatch();
 
   const { moviesId } = useParams();
@@ -22,10 +25,16 @@ export default function MovieDetailsPage() {
       .catch(error => error.massage);
   }, []);
 
+  const onGoBack = () => {
+    history.push(location?.state?.from ?? '/');
+  };
+
   return (
     <>
       {/* <h1>{`Movie ${moviesId}`}</h1> */}
-
+      <button type="button" onClick={onGoBack}>
+        Go back
+      </button>
       {movie && (
         <section>
           <div className={s.sectionMovie}>

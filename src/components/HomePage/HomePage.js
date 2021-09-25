@@ -1,8 +1,10 @@
 import { useState, useEffect } from 'react';
 import * as Api from '../../services/Api';
-import { NavLink } from 'react-router-dom';
+import { NavLink, useLocation } from 'react-router-dom';
 
 function HomePage() {
+  const location = useLocation();
+
   const [page, SetPage] = useState(1);
   const [movies, setMovies] = useState([]);
 
@@ -23,7 +25,14 @@ function HomePage() {
         {movies &&
           movies.map(movie => (
             <li key={movie.id}>
-              <NavLink to={`/movies/${movie.id}`}>{movie.title}</NavLink>
+              <NavLink
+                to={{
+                  pathname: `/movies/${movie.id}`,
+                  state: { from: location },
+                }}
+              >
+                {movie.title}
+              </NavLink>
             </li>
           ))}
       </ul>

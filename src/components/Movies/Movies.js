@@ -3,7 +3,7 @@ import { Component } from 'react';
 import Searchbar from '../Searchbar/Searchbar';
 import { ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
-import * as Api from '../../services/Api';
+// import * as Api from '../../services/Api';
 import MovieSearch from '../MovieSearch/MovieSearch';
 
 export default class Movies extends Component {

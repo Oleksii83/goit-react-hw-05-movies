@@ -23,7 +23,7 @@ export default function MovieDetailsPage() {
     Api.fethDetailsMovies(moviesId)
       .then(setMovie)
       .catch(error => error.massage);
-  }, []);
+  }, [moviesId]);
 
   const onGoBack = () => {
     history.push(location?.state?.from ?? '/');

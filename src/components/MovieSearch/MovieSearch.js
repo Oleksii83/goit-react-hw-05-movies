@@ -4,7 +4,7 @@ import { NavLink } from 'react-router-dom';
 
 export default class MovieSearch extends Component {
   state = {
-    movies: null,
+    movies: [],
   };
   componentDidUpdate(prevProps, prevState) {
     const prevName = prevProps.value;
@@ -15,7 +15,9 @@ export default class MovieSearch extends Component {
       )
         .then(res => res.json())
         .then(console.log)
-        .then(movies => this.setState({ movies }));
+        .then(data => {
+          this.setState({ movies: data.results });
+        });
     }
   }
 
@@ -28,7 +30,6 @@ export default class MovieSearch extends Component {
           {this.state.movies &&
             this.state.movies.map(movie => (
               <li key={movie.id}>
-                {movie.title}
                 <NavLink
                   to={{
                     pathname: `${this.props.match.path}/${movie.id}`,

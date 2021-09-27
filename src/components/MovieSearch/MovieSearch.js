@@ -1,5 +1,5 @@
-import { Component } from 'react';
-import { NavLink } from 'react-router-dom';
+import { Component } from "react";
+import { NavLink } from "react-router-dom";
 // import * as Api from '../../services/Api';
 
 export default class MovieSearch extends Component {
@@ -11,11 +11,10 @@ export default class MovieSearch extends Component {
     const nextName = this.props.value;
     if (prevName !== nextName) {
       fetch(
-        `https://api.themoviedb.org/3/search/movie?api_key=aa3c597c43c8e27f94ec1708817abf2a&language=en-US&page=1&include_adult=false)&query=${nextName}`,
+        `https://api.themoviedb.org/3/search/movie?api_key=aa3c597c43c8e27f94ec1708817abf2a&language=en-US&page=1&include_adult=false)&query=${nextName}`
       )
-        .then(res => res.json())
-        .then(console.log)
-        .then(data => {
+        .then((res) => res.json())
+        .then((data) => {
           this.setState({ movies: data.results });
         });
     }
@@ -28,11 +27,11 @@ export default class MovieSearch extends Component {
         <h2>{this.props.value}</h2>
         <ul>
           {this.state.movies &&
-            this.state.movies.map(movie => (
+            this.state.movies.map((movie) => (
               <li key={movie.id}>
                 <NavLink
                   to={{
-                    pathname: `${this.props.match.path}/${movie.id}`,
+                    pathname: `/movies/${movie.id}`,
                     state: { from: this.props.location },
                   }}
                 >

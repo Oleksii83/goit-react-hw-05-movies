@@ -1,1 +1,0 @@
-{"version":3,"sources":["webpack://src/components/MovieDetailsPage/MovieDetailsPage.module.css"],"names":[],"mappings":"AAAA,sCACE,YACF,CAEA,uCACE,iBACF","file":"movie-details-page.9541b4b4.chunk.css","sourcesContent":[".sectionMovie {\r\n  display: flex;\r\n}\r\n\r\n.overviewMovie {\r\n  padding-left: 15px;\r\n}\r\n"]}

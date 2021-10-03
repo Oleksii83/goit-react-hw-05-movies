@@ -1,11 +1,13 @@
 import { Component } from "react";
 import { NavLink } from "react-router-dom";
+
 // import * as Api from '../../services/Api';
 
 export default class MovieSearch extends Component {
   state = {
     movies: [],
   };
+
   componentDidUpdate(prevProps, prevState) {
     const prevName = prevProps.value;
     const nextName = this.props.value;

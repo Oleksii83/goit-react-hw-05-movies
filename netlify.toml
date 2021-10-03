@@ -1,0 +1,7 @@
+[build]
+pyblish = "build"
+
+[[redirects]]
+from="/*"
+to = "index.html"
+status = 200

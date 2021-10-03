@@ -1,13 +1,19 @@
-import { useState, useEffect, Suspense, lazy } from 'react';
-import Loader from 'react-loader-spinner';
-import { useParams } from 'react-router';
-import { NavLink, Route, useRouteMatch, useLocation, useHistory } from 'react-router-dom';
-import * as Api from '../../services/Api';
+import { useState, useEffect, Suspense, lazy } from "react";
+import Loader from "react-loader-spinner";
+import { useParams } from "react-router";
+import {
+  NavLink,
+  Route,
+  useRouteMatch,
+  useLocation,
+  useHistory,
+} from "react-router-dom";
+import * as Api from "../../services/Api";
 // import Cast from '../Cast/Cast';
-import Reviews from '../Reviews/Reviews';
-import s from './MovieDetailsPage.module.css';
+import Reviews from "../Reviews/Reviews";
+import s from "./MovieDetailsPage.module.css";
 
-const Cast = lazy(() => import('../Cast/Cast' /* webpackChunkName: "cast" */));
+const Cast = lazy(() => import("../Cast/Cast" /* webpackChunkName: "cast" */));
 
 export default function MovieDetailsPage() {
   const location = useLocation();
@@ -17,16 +23,16 @@ export default function MovieDetailsPage() {
 
   const { moviesId } = useParams();
 
-  const [movie, setMovie] = useState('');
+  const [movie, setMovie] = useState("");
 
   useEffect(() => {
     Api.fethDetailsMovies(moviesId)
       .then(setMovie)
-      .catch(error => error.massage);
+      .catch((error) => error.massage);
   }, [moviesId]);
 
   const onGoBack = () => {
-    history.push(location?.state?.from ?? '/');
+    history.push(location?.state?.from ?? "/");
   };
 
   return (
@@ -39,7 +45,10 @@ export default function MovieDetailsPage() {
         <section>
           <div className={s.sectionMovie}>
             <div>
-              <img src={`https://image.tmdb.org/t/p/w300${movie.poster_path}`} alt={movie.title} />
+              <img
+                src={`https://image.tmdb.org/t/p/w300${movie.poster_path}`}
+                alt={movie.title}
+              />
             </div>
             <div className={s.overviewMovie}>
               <h1>{movie.title}</h1>
@@ -48,7 +57,7 @@ export default function MovieDetailsPage() {
               <p>{movie.overview}</p>
               <h3>Genres</h3>
               <ul>
-                {movie.genres.map(genre => (
+                {movie.genres.map((genre) => (
                   <li key={genre.id}>{genre.name}</li>
                 ))}
               </ul>
@@ -59,8 +68,8 @@ export default function MovieDetailsPage() {
       )}
 
       {movie && (
-        <div>
-          <p>Additional information</p>
+        <div className={s.titleInfo}>
+          <h3>Additional information:</h3>
           <ul>
             <li>
               <NavLink to={`${url}/cast`} className="" activeClassName="">

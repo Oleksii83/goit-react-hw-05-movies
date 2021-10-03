@@ -1,0 +1,23 @@
+li {
+  list-style: none;
+}
+
+.PageContainer {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-around;
+  align-items: center;
+}
+
+.list {
+  text-align: center;
+  padding: 10px;
+}
+.title {
+  text-align: center;
+  color: oldlace;
+}
+
+.titleName {
+  color: blanchedalmond;
+}

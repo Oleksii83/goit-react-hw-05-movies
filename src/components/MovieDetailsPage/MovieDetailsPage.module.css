@@ -8,3 +8,9 @@
 .titleInfo {
   text-align: center;
 }
+.button {
+  margin: 10px 0px;
+}
+.castList {
+  list-style: none;
+}

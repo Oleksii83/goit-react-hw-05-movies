@@ -16,6 +16,7 @@ import s from "./MovieDetailsPage.module.css";
 const Cast = lazy(() => import("../Cast/Cast" /* webpackChunkName: "cast" */));
 
 export default function MovieDetailsPage() {
+  console.log(" MovieDetailsPage", MovieDetailsPage);
   const location = useLocation();
   const history = useHistory();
 
@@ -38,7 +39,7 @@ export default function MovieDetailsPage() {
   return (
     <>
       {/* <h1>{`Movie ${moviesId}`}</h1> */}
-      <button type="button" onClick={onGoBack}>
+      <button className={s.button} type="button" onClick={onGoBack}>
         Go back
       </button>
       {movie && (
@@ -70,7 +71,7 @@ export default function MovieDetailsPage() {
       {movie && (
         <div className={s.titleInfo}>
           <h3>Additional information:</h3>
-          <ul>
+          <ul className={s.castList}>
             <li>
               <NavLink to={`${url}/cast`} className="" activeClassName="">
                 Cast

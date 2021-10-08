@@ -6,7 +6,7 @@ import s from "./HomePage.module.css";
 function HomePage() {
   const location = useLocation();
 
-  const [page, SetPage] = useState(1);
+  const [page] = useState(1);
   const [movies, setMovies] = useState([]);
 
   // const url = useRouteMatch;

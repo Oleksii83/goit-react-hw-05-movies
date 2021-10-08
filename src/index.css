@@ -8,7 +8,10 @@ body {
 }
 
 body {
-  background-image: url("./scratched-film-strip-background.jpg");
+  /* background-image: url("./film.png"); */
+  background-repeat: no-repeat;
+  /* background-size: cover; */
+  /* background-position: center; */
 }
 
 code {

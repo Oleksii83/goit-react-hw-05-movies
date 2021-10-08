@@ -1,7 +1,7 @@
 import { Component } from "react";
 import { NavLink } from "react-router-dom";
-
-// import * as Api from '../../services/Api';
+import * as Api from "../../services/Api";
+import s from "./MovieSearch.module.css";
 
 export default class MovieSearch extends Component {
   state = {
@@ -12,32 +12,32 @@ export default class MovieSearch extends Component {
     const prevName = prevProps.value;
     const nextName = this.props.value;
     if (prevName !== nextName) {
-      fetch(
-        `https://api.themoviedb.org/3/search/movie?api_key=aa3c597c43c8e27f94ec1708817abf2a&language=en-US&page=1&include_adult=false)&query=${nextName}`
-      )
-        .then((res) => res.json())
-        .then((data) => {
-          this.setState({ movies: data.results });
-        });
+      Api.fethSearchMovies(nextName).then((data) => {
+        this.setState({ movies: data.results });
+      });
     }
   }
 
   render() {
-    // const { movies } = this.state;
     return (
       <div>
-        <h2>{this.props.value}</h2>
-        <ul>
+        <h2 className={s.title}>{this.props.value}</h2>
+        <ul className={s.PageContainer}>
           {this.state.movies &&
             this.state.movies.map((movie) => (
-              <li key={movie.id}>
+              <li className={s.list} key={movie.id}>
                 <NavLink
                   to={{
                     pathname: `/movies/${movie.id}`,
                     state: { from: this.props.location },
                   }}
                 >
-                  {movie.title}
+                  <img
+                    src={`https://image.tmdb.org/t/p/w300/${movie.poster_path}`}
+                    alt="{movie.title}"
+                    className=""
+                  />
+                  <p className={s.titleName}>{movie.title}</p>
                 </NavLink>
               </li>
             ))}

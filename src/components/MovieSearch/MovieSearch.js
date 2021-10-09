@@ -17,6 +17,12 @@ export default class MovieSearch extends Component {
       });
     }
   }
+  submitQueryChangedHandler = (query) => {
+    this.props.history.push({
+      ...this.props.location,
+      search: `query=${query}`,
+    });
+  };
 
   render() {
     return (

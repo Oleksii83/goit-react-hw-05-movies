@@ -33,7 +33,12 @@ export default function MovieDetailsPage() {
   }, [moviesId]);
 
   const onGoBack = () => {
-    history.push(location?.state?.from ?? "/");
+    // if (location && location.state && location.state.from) {
+    //   history.push(location.state.from);
+    //   return;
+    // }
+    // history.push("/movies");
+    history.push(location?.state?.from ?? "/movies");
   };
 
   return (
